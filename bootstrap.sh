@@ -7,6 +7,7 @@ sudo apt install -y \
   git \
   build-essential \
   clang \
+  clangd \
   clang-format \
   tree-sitter-cli \
   curl
