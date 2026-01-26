@@ -1,4 +1,4 @@
-include ../Makefile.inc
+-include ../Makefile.inc
 
 INSTALLDIR = ../lib
 INCLUDEDIR = ../include
@@ -8,6 +8,7 @@ SRCS       = $(wildcard *.c)
 HDRS       = $(wildcard *.h)
 OBJS       = $(patsubst %.c,%.o,$(SRCS))
 CFLAGS    += -Wall -g
+CPPFLAGS += -I$(INCLUDEDIR)
 
 .PHONY: all clean cleanall install
 all: libspl.a 
@@ -18,7 +19,7 @@ install: libspl.a $(HDRS)
 
 
 .c.o:
-	$(CC) $(CFLAGS) -c -fPIC  $<
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c -fPIC $<
 
 clean:
 	-rm -f $(OBJS)
