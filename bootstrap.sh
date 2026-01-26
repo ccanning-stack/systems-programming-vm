@@ -10,6 +10,8 @@ sudo apt install -y \
   clangd \
   clang-format \
   tree-sitter-cli \
+  gdb \
+  valgrind \
   curl
 
 echo "== Neovim =="

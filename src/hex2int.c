@@ -7,7 +7,8 @@
 int calculateTotal(char *argv) {
 
   int total = 0;
-  for (int i = 0; argv[i] != '\0'; i++) {
+
+  for (int i = 2; argv[i] != '\0'; i++) {
     total += (unsigned char)argv[i];
   }
   return total;
@@ -17,14 +18,17 @@ bool isValidHex(char *arg) {
 
   size_t argLength = strlen(arg);
 
-  for (int i = 0; i < argLength; i++) {
+  if (arg[0] == '0' && arg[1] == 'x' && argLength >= 3) {
+    for (unsigned i = 2; i < argLength; i++) {
 
-    if (isxdigit((unsigned char)arg[i]) == 0) {
-      return false;
-    } else {
-      return true;
+      if (isxdigit((unsigned char)arg[i]) == 0) {
+        return false;
+      } else {
+        return true;
+      }
     }
   }
+  return false;
 }
 
 void convertHexAndPrintInt(char *argv) {
