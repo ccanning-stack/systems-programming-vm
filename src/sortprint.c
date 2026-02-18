@@ -1,26 +1,8 @@
-_XOPEN_SOURCE >= 700
-#include <ctype.h>
+#define _XOPEN_SOURCE 700
 #include <locale.h>
-#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <xlocale.h>
-
-    void
-    printword(char *argv) {
-
-  if (argv == NULL) {
-    return;
-  }
-
-  if (isValidHex(argv)) {
-    int total = calculateTotal(argv);
-    printf("%s = %d\n", argv, total);
-  } else {
-    printf("%s: not a valid number\n", argv);
-  }
-}
 
 typedef struct {
   char *items;
@@ -29,26 +11,27 @@ typedef struct {
 } Dynamicarray;
 
 int main(int argc, char *argv[]) {
-  setlocale(int category, const char *locale);
+  setlocale(LC_ALL, "");
 
-  Dynamicarray sortedwords = {0};
+  printf("%s\n", setlocale(LC_COLLATE, NULL));
+
+  // Dynamicarray sortedwords = {0};
 
   if (argc < 2 || argc > 7) {
     printf("Usage: Must be between 1 and 6 arguments");
     return EXIT_FAILURE;
   }
 
-  sortedwords = sortbylocale(argv);
-}
-}
+  char *s1 = argv[1];
+  char *s2 = argv[2];
 
-LC_COLLATE
+  int numcomp = strcoll(s1, s2);
 
-strcoll(const char *s1, const char *s2);
+  if (numcomp < 0) {
+    printf("First word: %s\n", s1);
+  } else {
+    printf("First word: %s\n", s2);
+  }
 
-while (sortedwords[index] != NULL) {
-  sortedwords = sortbylocale(argv);
-}
-
-return EXIT_SUCCESS;
+  return EXIT_SUCCESS;
 }
