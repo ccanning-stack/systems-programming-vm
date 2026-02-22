@@ -1,20 +1,20 @@
 include ../Makefile.inc
 
-BUILDDIR := build
+BUILDDIR  := build
 COMMONDIR := ../common
 
 SRCS := $(wildcard *.c)
-BINS := $(SRCS:%.c=$(BUILDDIR)/%)
-OBJS := $(SRCS:%.c=$(BUILDDIR)/%.o)
+
+BINS := $(patsubst %.c,$(BUILDDIR)/%,$(SRCS))
+OBJS := $(patsubst %.c,$(BUILDDIR)/%.o,$(SRCS))
 
 CPPFLAGS += -I$(COMMONDIR)
 
 .PHONY: all clean
-
 all: $(BINS)
 
 $(BUILDDIR):
-	mkdir -p $(BUILDDIR)
+	@mkdir -p $(BUILDDIR)
 
 $(COMMONDIR)/libspl.a:
 	$(MAKE) -C $(COMMONDIR)
@@ -27,3 +27,5 @@ $(BUILDDIR)/%: $(BUILDDIR)/%.o $(COMMONDIR)/libspl.a
 
 clean:
 	$(RM) -r $(BUILDDIR)
+	$(RM) -f *.o
+	$(RM) -f $(notdir $(BINS))

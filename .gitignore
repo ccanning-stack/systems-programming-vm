@@ -1,17 +1,22 @@
 # build artefacts
 *.o
 *.a
+# build artefacts
+*.o
+*.a
 *.so
 *.out
 a.out
-/build/
+
+# build dirs (anywhere in repo)
+**/build/
 lib/
 
 # clangd / tooling
 compile_commands.json
 **/compile_commands.json
 
-# Editor junk
+# editor junk
 *.swp
 *.swo
 *~

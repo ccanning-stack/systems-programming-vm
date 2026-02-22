@@ -40,14 +40,14 @@ int main(int argc, char *argv[]) {
     return EXIT_FAILURE;
   }
 
-  for (int i = 1; i <= argc; i++) {
+  for (int i = 1; i < argc; i++) {
     da_append(words, argv[i]);
   }
 
   qsort(words.items, words.count, sizeof(*words.items), cmp_strcoll);
 
   while (words.count > 0) {
-    printf("%s\n", words.items[words.count]);
+    printf("%s\n", words.items[--words.count]);
   }
   return EXIT_SUCCESS;
 }
