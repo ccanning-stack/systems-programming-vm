@@ -35,8 +35,8 @@ int main(int argc, char *argv[]) {
 
   Words words = {0};
 
-  if (argc < 2 || argc > 7) {
-    printf("Usage: Must be between 1 and 6 arguments");
+  if (argc < 3 || argc > 7) {
+    printf("Usage: Must be between 2 and 6 arguments");
     return EXIT_FAILURE;
   }
 

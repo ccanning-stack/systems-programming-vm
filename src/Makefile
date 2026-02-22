@@ -1,10 +1,11 @@
 include ../Makefile.inc
 
+.SUFFIXES:
+
 BUILDDIR  := build
 COMMONDIR := ../common
 
 SRCS := $(wildcard *.c)
-
 BINS := $(patsubst %.c,$(BUILDDIR)/%,$(SRCS))
 OBJS := $(patsubst %.c,$(BUILDDIR)/%.o,$(SRCS))
 
@@ -28,4 +29,4 @@ $(BUILDDIR)/%: $(BUILDDIR)/%.o $(COMMONDIR)/libspl.a
 clean:
 	$(RM) -r $(BUILDDIR)
 	$(RM) -f *.o
-	$(RM) -f $(notdir $(BINS))
+	$(RM) -f $(notdir $(SRCS:.c=))
