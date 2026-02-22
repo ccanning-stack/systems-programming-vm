@@ -27,7 +27,7 @@ int cmp_strcoll(const void *a, const void *b) {
   const char *const *sa = a;
   const char *const *sb = b;
 
-  return strcoll(*sa, *sb);
+  return strcoll(*sb, *sa);
 }
 
 int main(int argc, char *argv[]) {
