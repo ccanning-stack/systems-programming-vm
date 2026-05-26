@@ -8,9 +8,13 @@
 *.out
 a.out
 
+*.txt
+
 # build dirs (anywhere in repo)
 **/build/
 lib/
+**/debug/
+**/clangd/
 
 # clangd / tooling
 compile_commands.json
